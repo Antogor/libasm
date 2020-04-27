@@ -1,0 +1,11 @@
+Curso ASM:
+	https://www.youtube.com/watch?v=mhqDaGCWeFc&list=PLZw5VfkTcc8NhxZoItF3u91CQaUzo7Wvn&index=1
+
+Manual NASM:
+	https://www.nasm.us/doc/nasmdoci.html
+
+Tutorial NASM:
+	https://cs.lmu.edu/~ray/notes/nasmtutorial/
+
+Curso NASM:
+	https://www.youtube.com/watch?v=cnoCnJ6xAHE&list=PLJy7--EGFrT1EK1wgvIJKFP5EgiIW2eDm
