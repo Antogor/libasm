@@ -1,0 +1,5 @@
+Para compilar con NASM:
+	nasm -f elf "nombre del archivo" (esto creara el objeto)
+
+Para transformar el objeto en un ejecutable:
+	ld -m elf_i386 -s -o "nombre que queramos del ejecutable" "ruta del .o"
