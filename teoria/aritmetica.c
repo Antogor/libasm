@@ -4,6 +4,8 @@ int _suma(int a, int b);
 
 int main()
 {
-	printf("%d", _suma(5, 3));
+	int x = _suma(5, 3);
+	printf("%d\n", x);
+	return(0);
 	
 }
