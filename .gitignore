@@ -1,4 +1,4 @@
 *.swo
 *.swp
-./*.o
-./*a.out
+*.o
+a.out

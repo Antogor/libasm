@@ -2,6 +2,7 @@
 		global _suma
 
 _suma:
-		mov eax, edi
-		add eax, esi
+		mov rax, rdi
+		add rax, rsi
+		syscall
 		ret
