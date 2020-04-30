@@ -8,7 +8,7 @@ int main()
 	int x = restar(5, 3);
 	printf("%d\n", x);
 	printf("%d\n", suma(x, 1));
-	ft_write(1, 'c', 1);
+	ft_write(1, 'c', 2);
 	return(0);
 	
 }
