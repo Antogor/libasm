@@ -6,6 +6,7 @@
 ssize_t	ft_write(int fd, const void *buf, size_t count);
 ssize_t	ft_read(int fd, void *buf, size_t count);
 size_t	ft_strlen(const char *s);
+int		ft_strcmp(const char *s1, const char *s2);
 
 int		main()
 {
@@ -34,9 +35,17 @@ int		main()
 /*
  * ft_strlen
 */
-	int l = ft_strlen("esto es una prueba de prueba");
-	int x = strlen("esto es una prueba de prueba");
+//	int l = ft_strlen("esto es una prueba de prueba");
+//	int x = strlen("esto es una prueba de prueba");
+//	printf("%d\n%d\n", l, x);
+
+/*
+ * ft_strcmp
+*/
+	int l = ft_strcmp("abc", "ab");
+   	int x = strcmp("abc", "ab");	
 	printf("%d\n%d\n", l, x);
+//	printf("%d\n", x);
 	return(0);
 	
 }
