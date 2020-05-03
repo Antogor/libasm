@@ -9,6 +9,7 @@ ssize_t	ft_read(int fd, void *buf, size_t count);
 size_t	ft_strlen(const char *s);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strcpy(char *dest, const char *src);
+char	*ft_strdup(const char *s1);
 
 int		main()
 {
@@ -48,20 +49,28 @@ int		main()
 //  int x = strcmp("abc", "ab");	
 //	printf("%d\n%d\n", l, x);
 //	printf("%d\n", x);
-//	return(0);
 
 /*
  * ft_strcpy
 */
-	char *s;
-	s = malloc(sizeof(char) * 11);
-	char *c;
-	c = malloc(sizeof(char) * strlen("hola") + 1);
-	strcpy(s, "hola");
-	int l = strlen(s);
-	char *r = ft_strcpy(c, "");
-	ft_strcpy(c, "");
-	int x = strlen(c);
-	printf("%s - %d\n%s - %d\n", s, l, r, x);
+//	char *s;
+//	s = malloc(sizeof(char) * 11);
+//	char c[2] = "12";
+//	c = malloc(sizeof(char) * strlen("hola") + 1);
+//	strcpy(s, "hola");
+//	int l = strlen(s);
+//	char *r = ft_strcpy(c, "");
+//	ft_strcpy(c, "hola");
+//	int x = strlen(c);
+//	printf("%s - %d\n%s - %d\n", s, l, c, x);
 //	printf("%s - %d\n", s, l);
+
+/*
+ * ft_strdup
+*/
+	char *s;
+
+	s = ft_strdup("");
+	printf("%s\n", s);
+	return (0);
 }
