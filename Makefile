@@ -1,8 +1,8 @@
 NAME = tests.a
 
-FUN = ft_write.s ft_read.s ft_strlen.s ft_strcmp.s
+FUN = ft_write.s ft_read.s ft_strlen.s ft_strcmp.s ft_strcpy.s
 
-OBJ = ft_write.o ft_read.o ft_strlen.o ft_strcmp.o
+OBJ = ft_write.o ft_read.o ft_strlen.o ft_strcmp.o ft_strcpy.o
 
 
 all: $(NAME)
