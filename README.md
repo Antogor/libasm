@@ -19,7 +19,7 @@ nasm -f elf "name of the file" (this will create the .o file)
 ```
 -f = format of the architecture -f elf_x86_64 (cpu 64 bits), elf32 (32 bits) etc..
 
-One we have the .o files, we need to transform to execute:
+Once we have the .o files, we need to transform to execute:
 ```linux
 ar rcs "name of the file finisehd with .a" "every .o needed"
 ```
