@@ -17,7 +17,7 @@ First we need the .o files for every .s file:
 ```linux
 nasm -f elf "name of the file" (this will create the .o file)
 ```
--f = format of the architecture -f elf_x86_64 (cpu 64 bits), elf32 (32 bits) etc..
+-f = format of the architecture -f elf_x86_64 (cpu 64 bits), elf32 (32 bits) etc.. (Use "nasm -hf" command for more help)
 
 Once we have the .o files, we need to transform to execute:
 ```linux
