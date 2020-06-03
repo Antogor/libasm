@@ -7,7 +7,7 @@ _ft_strcpy:
 			push	rcx
 			mov		rcx, 0
 			cmp		BYTE [rsi + rcx], 0		; compare is s2 are empty
-			je		null
+			je		return
 			jmp		while					; jump to loop
 
 while:
@@ -22,12 +22,12 @@ increase:
 			jmp		while				
 
 
-null:										; if can't make a copy, return original s1
-			pop		rcx
-			mov		rsp, rbp
-			pop		rbp
-			mov		rax, rdi
-			ret
+;null:										; if can't make a copy, return original s1
+;			pop		rcx
+;			mov		rsp, rbp
+;			pop		rbp
+;			mov		rax, rdi
+;			ret
 
 return:
 			mov		rax, rdi

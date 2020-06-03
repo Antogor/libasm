@@ -1,5 +1,6 @@
 			section .text
 			global	_ft_strcmp
+		;	extern	_ft_strlen
 
 _ft_strcmp:
 			push	rbp						; add rbp to the stack and move base pointer to this adress 
@@ -7,6 +8,18 @@ _ft_strcmp:
 			push	rcx   					; add rcx to stack
 			mov		rcx, 0					; init the count to zero
 			jmp		while
+
+;len:
+	;		push	rsi
+	;		call	_ft_strlen
+	;		mov		rbx, rax
+	;		mov		rsi, rdi
+	;		call	_ft_strlen
+	;		pop		rsi
+	;		cmp		rbx, rax
+	;		je		while
+	;		jl		lower
+	;		jg		greater
 
 while:
 			mov		dl, BYTE [rdi + rcx] 	; dl is the low part of rdx, dl = 1 byte (8 bits), rdx = 8 byte (64 bits)
@@ -17,9 +30,9 @@ while:
 			jg		greater 				; if the char in s1 is greater than char in s2 jump to greater
 
 increase: 									; increase count rcx if the chars ar equals
+			inc		rcx						; if not is null, increase rcx, and jump back to while and continue the loop
 			cmp		dl, 0					; compare de actual char in s1 with char null
 			je		null					; if is null, jump to null
-			inc		rcx						; if not is null, increase rcx, and jump back to while and continue the loop
 			jmp		while
 
 null:										; method to know if one, or the two strings are in the null character

@@ -16,10 +16,10 @@ int		main()
 /*
  * ft_write
 */
-//	char c = 'A';
+	char c = 'A';
 //	char *s = "";
 //
-//	int l =	ft_write(1, s, 4);
+	int l =	ft_write(42, &c, 1);
 //	int x = write(1, s, 4);
 //
 //	printf("%d, %d", l, x);
@@ -55,22 +55,22 @@ int		main()
 */
 //	char *s;
 //	s = malloc(sizeof(char) * 11);
-//	char c[2] = "12";
-//	c = malloc(sizeof(char) * strlen("hola") + 1);
-//	strcpy(s, "hola");
+//	char *c;
+//	c = malloc(sizeof(char) * 11);
+//	strcpy(s, "");
 //	int l = strlen(s);
 //	char *r = ft_strcpy(c, "");
-//	ft_strcpy(c, "hola");
+//	ft_strcpy(c, "");
 //	int x = strlen(c);
 //	printf("%s - %d\n%s - %d\n", s, l, c, x);
-//	printf("%s - %d\n", s, l);
+//	printf("ORI: %s\nMIO: %s\n", s, c);
 
 /*
  * ft_strdup
 */
-	char *s;
-
-	s = ft_strdup("");
-	printf("%s\n", s);
+//	char *s;
+//
+//	s = ft_strdup("");
+//	printf("%s\n", s);
 	return (0);
 }
