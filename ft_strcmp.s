@@ -1,6 +1,5 @@
 			section .text
 			global	_ft_strcmp
-		;	extern	_ft_strlen
 
 _ft_strcmp:
 			push	rbp						; add rbp to the stack and move base pointer to this adress 
@@ -9,38 +8,26 @@ _ft_strcmp:
 			mov		rcx, 0					; init the count to zero
 			jmp		while
 
-;len:
-	;		push	rsi
-	;		call	_ft_strlen
-	;		mov		rbx, rax
-	;		mov		rsi, rdi
-	;		call	_ft_strlen
-	;		pop		rsi
-	;		cmp		rbx, rax
-	;		je		while
-	;		jl		lower
-	;		jg		greater
-
 while:
 			mov		dl, BYTE [rdi + rcx] 	; dl is the low part of rdx, dl = 1 byte (8 bits), rdx = 8 byte (64 bits)
 			mov		dh, BYTE [rsi + rcx] 	; the same with dh, high part of rdx. Save de 1 byte character to 1 byte register
+			cmp		dl, 0					; compare de actual char in s1 is null
+			je		null					; if is null, jump to null
+			cmp		dh, 0					; compare de actual char in s2 is null
+			je		greater					; if is null, jump to greater
 			cmp		dl, dh 					; compare the 2 chars of every string
 			je		increase 				; conditional if the chars ar equal
-			jl		lower 					; if the char in s1 is lower than char in s2 jump to lower
 			jg		greater 				; if the char in s1 is greater than char in s2 jump to greater
+			jl		lower 					; if the char in s1 is lower than char in s2 jump to lower
 
 increase: 									; increase count rcx if the chars ar equals
-			inc		rcx						; if not is null, increase rcx, and jump back to while and continue the loop
-			cmp		dl, 0					; compare de actual char in s1 with char null
-			je		null					; if is null, jump to null
+			inc		rcx						; increase rcx, and jump back to while and continue the loop
 			jmp		while
 
 null:										; method to know if one, or the two strings are in the null character
-			cmp		dh, 0					; dl is = to null, here, compare if s2 is in null character too
-			je		equal					; if s1 and s2 are in the null character in the same position, jump to equal
-			cmp		dl, dh					; if not compare again the two characters, depends of the results, jump to lower (s1 < s2) o greater (s1 > s2)
-			jl		lower
-			jg		greater
+			cmp		dh, 0					; compare if s2 are in the null character too
+			je		equal					; if it is, jump to equal
+			jne		lower					; if it not, jump to lower
 
 equal:
 			mov		rax, 0					; set register rax to 0 if s1 and s2 are equal
