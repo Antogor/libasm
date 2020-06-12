@@ -28,3 +28,30 @@ Then we have to compile the file .a with the mains o C files where call the ASM 
 ```linux
 gcc "every C files" ".a file"
 ```
+
+## Basic test :white_check_mark:
+To run the test, copy the Makefile in the path with yours functions
+```make
+make test
+```
+Run the binary file ./test and choose what test do you want to run:
+
+    - cmp = ft_strcmp
+    
+    - len = ft_strlen
+    
+    - cpy = ft_strcpy
+    
+    - dup = ft_strdup
+    
+    - w = write
+    
+    - r = read
+
+This test print in the terminal your results and the original results from the built-in functions
+
+You can edit tests.c file to change and proof whatever you want.
+
+Is my first test so maybe could have problems (undifene behaviours), and not contemplate every crazy scenario. Don't base your work only in this test, use it like reference and path to create your test. I'll actualize it
+
+If you have any sugest to improve this test i'll recive it with open arms.
