@@ -11,21 +11,119 @@ int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strdup(const char *s1);
 
-int	test_cmp(const char *s1, const char *s2)
+int	test_read()
 {
-	int	l;
-	int	x;
+	char	*s1 = (char *)malloc(sizeof(char) * 100);
+	int		fd;
+	char	*s2;
+	int		buff;
+	int		l;
+	int		x;
 
-	l = ft_strcmp(s1, s2);
-	x = strcmp(s1, s2);	
+	printf("%19s", "===READ===\n");
+	//fd = open(s1, O_RDONLY);
+	fd = open("./txt/1.txt", O_RDONLY);
+	printf("Insert bytes to read: ");
+	scanf("%s", s1);
+	buff = atoi(s1);
+	l = ft_read(fd, s2, buff);
+	x = read(fd, s2, buff);
 	printf("FT: %d\nORIGINAL: %d\n\n", l, x);
+	free(s1);
+	return (0);
+}
+
+int	test_write()
+{
+	char	*s1 = (char *)malloc(sizeof(char) * 100);
+	int		fd;
+	char	*s2 = (char *)malloc(sizeof(char) * 100);
+	char	*s3 = (char *)malloc(sizeof(char) * 100);
+	int		buff;
+	int		l;
+	int		x;
+
+	printf("%19s", "===WRITE===\nInsert fd: ");
+	scanf("%s", s1);
+	fd = atoi(s1);
+	printf("Insert string: ");
+	scanf("%s", s2);
+	printf("Insert buff: ");
+	scanf("%s", s3);
+	buff = atoi(s3);
+	l = ft_write(fd, s2, buff);
+	x = ft_write(fd, s2, buff);
+	printf("FT: %d\nORIGINAL: %d\n\n", l, x);
+	free(s1);
+	free(s2);
+	free(s3);
+	return (0);
+}
+
+int	test_cpy()
+{
+	char	*s1 = (char *)malloc(sizeof(char) * 100);
+	char	*test_ft = (char *)malloc(sizeof(char) * 100);
+	char	*test_ori = (char *)malloc(sizeof(char) * 100);
+
+//	char	*test_ft = "No empty";
+//	char	*test_ori = "No empty";
+	printf("%19s", "===STRCPY===\nInsert s1: ");
+	scanf("%s", s1);
+	printf("FT: %s\nORIGINAL: %s\n\n", ft_strcpy(test_ft, s1), strcpy(test_ori, s1));
+	free(s1);
+	free(test_ft);
+	free(test_ori);
+	return (0);
+}
+
+int	test_dup()
+{
+	char	*s1 = (char *)malloc(sizeof(char) * 100);
+
+	printf("%19s", "===STRDUP===\nInsert s1: ");
+	scanf("%s", s1);
+	printf("FT: %s\nORIGINAL: %s\n\n", ft_strdup(s1), strdup(s1));
+	return (0);
+}
+
+int	test_len()
+{
+	int		l;
+	int		x;
+	char	*s1 = (char *)malloc(sizeof(char) * 100);
+
+	printf("%19s", "===STRLEN===\nInsert s1: ");
+	scanf("%s", s1);
+	l = ft_strlen(s1);
+	x = strlen(s1);
+	printf("FT: %d\nORIGINAL: %d\n\n", l, x);
+	free(s1);
+	return (0);
+}
+
+int	test_cmp()
+{
+	int		l;
+	int		x;
+	char	*s1 = (char *)malloc(sizeof(char) * 100);
+	char	*s2 = (char *)malloc(sizeof(char) * 100);
+
+	printf("%19s", "===STRCMP===\nInsert s1: ");
+	scanf("%s", s1);
+	printf("Insert s2: ");
+	scanf("%s", s2);
+	l = ft_strcmp(s1, s2);
+	x = strcmp(s1, s2);
+	x = x < 0 ? -1 : x >  0 ? 1 : 0;	
+	printf("FT: %d\nORIGINAL: %d\n\n", l, x);
+	free(s1);
+	free(s2);
 	return (0);
 }
 
 int		main(int argc, char **argv)
 {
-	char *s1 = (char *)malloc(sizeof(char) * 20);
-	char *s2 = (char *)malloc(sizeof(char) * 20);
 
 	if (argc != 2)
 	{
@@ -35,90 +133,19 @@ int		main(int argc, char **argv)
 	else
 	{
 		if (strcmp(argv[1], "cmp") == 0)
-		{
-			printf("%19s", "===STRCMP===\nInsert s1: ");
-			scanf("%s", s1);
-			printf("Insert s2: ");
-			scanf("%s", s2);
-			test_cmp(s1, s2);
-		}
+			test_cmp();
+		else if (strcmp(argv[1], "len") == 0)
+			test_len();
+		else if (strcmp(argv[1], "cpy") == 0)
+			test_cpy();
+		else if (strcmp(argv[1], "dup") == 0)
+			test_dup();
+		else if (strcmp(argv[1], "w") == 0)
+			test_write();
+		else if (strcmp(argv[1], "r") == 0)
+			test_read();
+		else
+			printf("Invalid test\n");
 	}
 	return (0);
-/*
- * ft_write
-*/
-//	char c = 'A';
-//	char *s = "";
-//
-//	int l =	ft_write(42, &c, 1);
-//	int x = write(1, s, 4);
-//
-//	printf("%d, %d", l, x);
-
-/*
- * ft_read
-*/ 	
-//	char *buff;
-//	int fd = open("./teoria/compilar.txt", O_RDONLY);
-//	int l =	ft_read(fd, buff, 10);
-//	//	int x = read(fd, buff, 2);
-//	//	printf("FT: %d\nORI: %d\n", l, x);
-//	printf("%s\n", buff);
-//	close(fd);
-
-/*
- * ft_strlen
-*/
-//	int l = ft_strlen("esto es una prueba de prueba");
-//	int x = strlen("esto es una prueba de prueba");
-//	printf("%d\n%d\n", l, x);
-
-/*
- * ft_strcmp
-*/
-//	int	l;
-//	int	x;
-//
-//	printf("%19s", "===STRCMP===\n\n");
-//	printf("%17s", "===BASIC===\n");
-//	l = ft_strcmp("abc", "abc");
-//	x = strcmp("abc", "abc");	
-//	printf("TEST: s1 = abc, s2 = abc\n");
-//	printf("%-14sFT: %d\nORIGINAL: %d\n\n", "Zero case", l, x);
-//	l = ft_strcmp("abc", "a");
-//	x = strcmp("abc", "a");	
-//	printf("TEST: s1 = abc, s2 = a\n");
-//	printf("%-14sFT: %d\nORIGINAL: %d\n\n", "Greater case", l, x);
-//	l = ft_strcmp("a", "abc");
-//	x = strcmp("a", "abc");	
-//	printf("TEST: s1 = a, s2 = abc\n");
-//	printf("%-14sFT: %d\nORIGINAL: %d\n\n", "Lower case", l, x);
-//	
-//	l = ft_strcmp("\xff\xff", "\xff");
-//	x = strcmp("\xff\xff", "\xff");	
-//	printf("MIO: %d\nORIGINAL: %d\n", l, x);
-//	printf("\xff\xff");
-
-/*
- * ft_strcpy
-*/
-//	char *s;
-//	s = malloc(sizeof(char) * 11);
-//	char *c;
-//	c = malloc(sizeof(char) * 11);
-//	strcpy(s, "");
-//	int l = strlen(s);
-//	char *r = ft_strcpy(c, "");
-//	ft_strcpy(c, "");
-//	int x = strlen(c);
-//	printf("%s - %d\n%s - %d\n", s, l, c, x);
-//	printf("ORI: %s\nMIO: %s\n", s, c);
-
-/*
- * ft_strdup
-*/
-//	char *s;
-//
-//	s = ft_strdup("");
-//	printf("%s\n", s);
 }
