@@ -21,7 +21,7 @@ int	test_read()
 	int		x;
 
 	printf("%19s", "===READ===\n");
-	//fd = open(s1, O_RDONLY);
+	//fd = 42; //bad fd
 	fd = open("./txt/1.txt", O_RDONLY);
 	printf("Insert bytes to read: ");
 	scanf("%s", s1);
@@ -66,10 +66,9 @@ int	test_cpy()
 	char	*test_ft = (char *)malloc(sizeof(char) * 100);
 	char	*test_ori = (char *)malloc(sizeof(char) * 100);
 
-//	char	*test_ft = "No empty";
-//	char	*test_ori = "No empty";
 	printf("%19s", "===STRCPY===\nInsert s1: ");
 	scanf("%s", s1);
+	//s1 = ""; //s1 empty
 	printf("FT: %s\nORIGINAL: %s\n\n", ft_strcpy(test_ft, s1), strcpy(test_ori, s1));
 	free(s1);
 	free(test_ft);
@@ -83,6 +82,7 @@ int	test_dup()
 
 	printf("%19s", "===STRDUP===\nInsert s1: ");
 	scanf("%s", s1);
+	//s1 = ""; //s1 empty
 	printf("FT: %s\nORIGINAL: %s\n\n", ft_strdup(s1), strdup(s1));
 	return (0);
 }
@@ -95,6 +95,7 @@ int	test_len()
 
 	printf("%19s", "===STRLEN===\nInsert s1: ");
 	scanf("%s", s1);
+	//s1 = ""; //s1 empty
 	l = ft_strlen(s1);
 	x = strlen(s1);
 	printf("FT: %d\nORIGINAL: %d\n\n", l, x);
@@ -111,8 +112,10 @@ int	test_cmp()
 
 	printf("%19s", "===STRCMP===\nInsert s1: ");
 	scanf("%s", s1);
+	//s1 = ""; //s1 empty
 	printf("Insert s2: ");
 	scanf("%s", s2);
+	//s2 = ""; //s2 empty
 	l = ft_strcmp(s1, s2);
 	x = strcmp(s1, s2);
 	x = x < 0 ? -1 : x >  0 ? 1 : 0;	
