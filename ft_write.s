@@ -3,13 +3,22 @@
 			extern	___error
 
 _ft_write:
+			cmp		edx, 0				; compare if len sended is < 0
+			jl		len_error
 			mov		rax, 0x2000004		; call to syscall write
 			syscall						; make write
-			cmp		rax, 9				; the value of rax will change depende of the syscall, and test if it is fine or not
-			je		bad_fd
-			cmp		rax, 14
-			je		bad_address
+			jc		error				; check if the carry flag is 1, its means that syscall has failed
 			ret
+
+len_error:
+			mov		rax, -1
+			ret
+
+error:									; if syscall has failed compare the value of rax
+			cmp		rax, 9				; 9 is a bad file descriptor
+			je		bad_fd
+			cmp		rax, 14				; 14 is a bad address
+			je		bad_address
 
 bad_address:
 			push	rbp					; push to the stack rbp
@@ -27,6 +36,6 @@ bad_fd:
 			call	___error
 			mov		QWORD [RAX], 9
 			mov		rax, -1
-			mov		rsp, rbp
-			pop		rbp
+			mov	rsp, rbp
+			pop	rbp
 			ret

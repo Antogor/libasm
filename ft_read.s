@@ -3,13 +3,22 @@
 			extern	___error
 
 _ft_read:
+			cmp		edx, 0
+			jl		len_error
 			mov		rax, 0x2000003
 			syscall
+			jc		error
+			ret
+
+len_error:
+			mov		rax, -1
+			ret
+
+error:
 			cmp		rax, 9			
 			je		bad_fd
 			cmp		rax, 14
 			je		bad_address
-			ret
 
 bad_address:
 			push	rbp

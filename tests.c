@@ -19,15 +19,18 @@ int	test_read()
 	int		buff;
 	int		l;
 	int		x;
+	char	*s_error;
 
 	printf("%19s", "===READ===\n");
-	//fd = 42; //bad fd
+//	fd = 42; //bad fd
 	fd = open("./txt/1.txt", O_RDONLY);
 	printf("Insert bytes to read: ");
 	scanf("%s", s1);
 	buff = atoi(s1);
 	l = ft_read(fd, s2, buff);
 	x = read(fd, s2, buff);
+//	l = ft_read(fd, s_error, buff);
+//	x = read(fd, s_error, buff);
 	printf("FT: %d\nORIGINAL: %d\n\n", l, x);
 	free(s1);
 	return (0);
@@ -42,6 +45,7 @@ int	test_write()
 	int		buff;
 	int		l;
 	int		x;
+	char	*s_error;
 
 	printf("%19s", "===WRITE===\nInsert fd: ");
 	scanf("%s", s1);
@@ -52,7 +56,9 @@ int	test_write()
 	scanf("%s", s3);
 	buff = atoi(s3);
 	l = ft_write(fd, s2, buff);
-	x = ft_write(fd, s2, buff);
+	x = write(fd, s2, buff);
+	//l = ft_write(fd, s_error, buff);
+	//x = write(fd, s_error, buff);
 	printf("FT: %d\nORIGINAL: %d\n\n", l, x);
 	free(s1);
 	free(s2);
